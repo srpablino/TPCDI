@@ -1,8 +1,7 @@
 import csv
-import sys
-with open("./inputFiles/Time.txt") as csv_file:
+with open("../inputFiles/Batch1/Time.txt") as csv_file:
     csv_reader = csv.reader(csv_file, delimiter='|')
-    with open('./output/dimTime/dimTime.csv', 'w', newline='\n') as outputCSV:
+    with open('../outputANDCtlFiles/dimTime/dimTime.csv', 'w', newline='\n') as outputCSV:
         writer = csv.writer(outputCSV, delimiter='|')
         for row in csv_reader:
             # SK_TIMEID row[0] OK
