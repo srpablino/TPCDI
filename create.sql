@@ -61,7 +61,7 @@ create table dimCompany (
     Name CHAR(60) NOT NULL,
     Industry CHAR(50) NOT NULL,
     SPrating CHAR(4),
-    isLowGrade BOOLEAN,
+    isLowGrade CHAR(1 byte),
     CEO CHAR(100) NOT NULL,
     AddressLine1 CHAR(80),
     AddressLine2 CHAR(80),
@@ -71,8 +71,8 @@ create table dimCompany (
     Country CHAR(24),
     Description CHAR(150) NOT NULL,
     FoundingDate DATE,
-    IsCurrent BOOLEAN NOT NULL,
-    BatchID NUM(5) NOT NULL,
+    IsCurrent CHAR(1 byte) NOT NULL,
+    BatchID NUMBER(5) NOT NULL,
     EffectiveDate DATE NOT NULL,
     EndDate DATE NOT NULL
 );
