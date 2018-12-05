@@ -23,6 +23,6 @@ TRAILING NULLCOLS
    FoundingDate DATE "YYYY-MM-DD",
    IsCurrent,
    BatchID,
-   EffectiveDate DATE "YYYY-MM-DD",
-   EndDate DATE "YYYY-MM-DD"
+   EffectiveDate DATE "YYYY-MM-DD HH24:MI:SS",
+   EndDate DATE "YYYY-MM-DD HH24:MI:SS"
 )

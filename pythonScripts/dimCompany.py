@@ -4,20 +4,17 @@ from tqdm import tqdm_notebook as tqdm
 from datetime import datetime
 from pprint import pprint
 
-
 status_types = {}
-with open('../data/Batch1/StatusType.txt', 'r') as f:
+with open('../../data/Batch1/StatusType.txt', 'r') as f:
     for line in f:
         split = line.split('|')
         status_types[split[0]] = split[1].strip()
 
-
 industries = {}
-with open('../data/Batch1/Industry.txt', 'r') as f:
+with open('../../data/Batch1/Industry.txt', 'r') as f:
     for line in f:
         split = line.split('|')
         industries[split[0]] = split[1].strip()
-
 
 finwire_schema = [
     ['PTS', 15],
@@ -38,7 +35,6 @@ finwire_schema = [
     ['Description', 150]
 ]
 
-
 dim_company_map = {
     'SK_CompanyID': [True, ''],
     'CompanyID': [False, 'CIK'],
@@ -55,17 +51,16 @@ dim_company_map = {
     'StateProv': [False, 'StateProvince'],
     'Country': [False, 'Country'],
     'Description': [False, 'Description'],
-    'FoundingDate': [True, 'datetime.strptime(record[\'FoundingDate\'].split(\'-\')[0], \'%Y%M%d\').strftime(\'%Y-%M-%d\')'],
+    'FoundingDate': [True, 'datetime.strptime(record[\'FoundingDate\'].split(\'-\')[0], \'%Y%m%d\').strftime(\'%Y-%m-%d\')'],
     'IsCurrent': [True, '\'0\''],
     'BatchID': [True, '\'0\''],
-    'EffectiveDate': [True, 'datetime.strptime(record[\'PTS\'].split(\'-\')[0], \'%Y%M%d\').strftime(\'%Y-%M-%d\')'],
+    'EffectiveDate': [True, 'datetime.strptime(record[\'PTS\'], \'%Y%m%d-%H%M%S\').strftime(\'%Y-%m-%d %H:%M:%S\')'],
     'EndDate': [True, 'None']
 }
 
-
 dim_companies = defaultdict(list)
 
-for file in tqdm(sorted(glob('../data/Batch1/FINWIRE*'))):
+for file in tqdm(sorted(glob('../..//data/Batch1/FINWIRE*'))):
     if '_audit' in file:
         continue
     with open(file, 'r') as f:
@@ -90,7 +85,6 @@ for file in tqdm(sorted(glob('../data/Batch1/FINWIRE*'))):
 
             dim_companies[record['CIK']].append(company)
 
-
 for CIK, entries in tqdm(dim_companies.items()):
     for (old,new) in zip(entries, entries[1:] + [None]):
         if not new:
@@ -99,8 +93,7 @@ for CIK, entries in tqdm(dim_companies.items()):
             continue
         old['EndDate'] = new['EffectiveDate']
 
-
-with open('./generated_data/dimCompany.csv', 'w') as out:
+with open('../generated_data/dimCompany.csv', 'w') as out:
     for CIK, entries in tqdm(dim_companies.items()):
         for entry in entries:
             out.write('|'.join(entry.values()) + '\n')
