@@ -1,0 +1,7 @@
+CREATE TABLE factwatch(
+SK_CustomerID           NUMBER NOT NULL,
+SK_SecurityID           NUMBER NOT NULL,
+SK_DateID_DatePlaced    DATE NOT NULL,
+SK_DateID_DateRemoved   DATE,
+BatchID                 NUMBER NOT NULL
+)
