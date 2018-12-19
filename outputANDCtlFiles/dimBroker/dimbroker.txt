@@ -1,0 +1,15 @@
+CREATE TABLE dimbroker(
+SK_BrokerID          NUMBER PRIMARY KEY,
+BrokerID             NUMBER NOT NULL,
+ManagerID            NUMBER,
+FirstName            VARCHAR2(50) NOT NULL,
+LastName             VARCHAR2(50) NOT NULL,
+MiddleInitial        VARCHAR2(1),
+Branch               VARCHAR2(50),
+Office               VARCHAR2(50),
+Phone                VARCHAR2(14),
+IsCurrent            CHAR(1 byte) NOT NULL,
+BatchID              NUMBER NOT NULL,
+EffectiveDate        DATE NOT NULL,
+EndDate              DATE NOT NULL 
+);
