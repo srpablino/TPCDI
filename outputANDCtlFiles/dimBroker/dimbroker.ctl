@@ -1,5 +1,5 @@
 LOAD DATA
-INFILE '/home/oracle/files_ready/HR_res.csv'
+INFILE 'HR_res.csv'
 APPEND
 INTO TABLE dimbroker
 FIELDS TERMINATED BY ','
