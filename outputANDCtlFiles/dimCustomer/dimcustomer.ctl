@@ -1,5 +1,5 @@
 LOAD DATA
-INFILE '/home/oracle/files_ready/dimcustomer_FINAL.csv'
+INFILE 'dimcustomer_FINAL.csv'
 APPEND
 INTO TABLE dimcustomer
 FIELDS TERMINATED BY ','

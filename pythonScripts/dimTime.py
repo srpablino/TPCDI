@@ -17,8 +17,8 @@ with open("../inputFiles/Batch1/Time.txt") as csv_file:
             i = 8
             while i<10:
                 if row[i] == "false":
-                    row[i] = "f"
+                    row[i] = '0'
                 elif row[i] == "true":
-                    row[i] = "t"
+                    row[i] = '1'
                 i+=1
             writer.writerow(row)
